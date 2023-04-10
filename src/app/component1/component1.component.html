@@ -1,0 +1,36 @@
+<h3>Directivas Estructurales en Angular</h3>
+<p>Controlar los elementos del "DOM" gracias a atributos especiales. Estos atributos son llamados directivas estructurales.</p>
+<br/>
+<p>Directivas estructurales:</p>
+<hr/>
+<p>*ngIf: Permite mostrar / ocultar elementos del DOM.</p>
+<hr/>
+<p>*ngSwitch: Permite ejecutar casos condicionales sobre elementos del DOM</p>
+<hr/>
+<p>*ngFor: Permite ejecutar bucles sobre elementos del DOM.</p>
+<hr  class="my-5"/>
+
+<div class="row">
+    <div class="col-3" *ngFor="let elem of elemArray">
+        <div class="card mb-4 box-shadow">
+        <img  *ngIf="elem.status" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22508%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20508%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_18767664427%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_18767664427%22%3E%3Crect%20width%3D%22508%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22169.7562484741211%22%20y%3D%22123.78000068664551%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+        <div class="card-body">
+            <p class="card-text"> {{ elem.name }} </p>
+            <div class="d-flex justify-content-between align-items-center">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="elem.status=!elem.status"> {{ elem.status ? 'ocultar' : 'ver' }} </button>
+                <small class="text-muted"> {{ elem.time }} min/s </small>
+                <svg *ngIf="elem.deleted" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM3.965 13.096a6.5 6.5 0 0 0 9.131-9.131ZM1.5 8a6.474 6.474 0 0 0 1.404 4.035l9.131-9.131A6.499 6.499 0 0 0 1.5 8Z"></path></svg>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="my-5" [ngSwitch]="elemStatus">
+    <div *ngSwitchCase="1" class="alert alert-primary" role="alert">  El estado es 1 </div>
+    <div *ngSwitchCase="2" class="alert alert-success" role="alert">  El estado es 2 </div>
+    <div *ngSwitchCase="3" class="alert alert-warning" role="alert">  El estado es 3 </div>
+    <div *ngSwitchDefault  class="alert alert-danger" role="alert">  No es ningún estado conocido </div>
+</div>
+<button type="button" class="btn btn-sm btn-outline-secondary" (click)="otherState()"> Otro Estado </button>

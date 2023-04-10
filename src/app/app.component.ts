@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-app-2';
+  btnOption:string='opt-1';
+  fontSizePx:number=10;
+  fontSizePx2:number=20;
+
+  setBtnOption(opt:string):void{
+    this.btnOption=opt;
+  }
+
 }
